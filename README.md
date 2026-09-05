@@ -44,30 +44,47 @@ anywhere in the project.
 
 ## Running it
 
-You need R 4.5+, the Disease Models Portal, and IMPC Data Release 20.1.
+**This repository is the assistant module, not a complete application.** It
+contains the two files I wrote. To run it you also need two things I can't
+distribute:
 
-The data files aren't in this repo (they're ~197 MB and not mine to
-redistribute). Get Release 20.1 from the IMPC and put the three `.fst` files in
-`data/`.
+1. **The Disease Models Portal itself** — the existing R Shiny app (`app.R`,
+   `read_data.R` and the other `mod_*.R` modules). That belongs to the research
+   group, not to me.
+2. **IMPC Data Release 20.1** — the three `.fst` files, about 197 MB. Available
+   from the IMPC.
 
-Put your OpenAI key in `~/.Renviron`, not in the project folder:
+If you already have the portal (my supervisor and the group do), setup is:
+
+1. Copy `R/mod_chat.R` and `R/ollama_client.R` into the portal folder.
+2. Put the three `.fst` files in `data/`.
+3. Register the chat module in `app.R` so it appears as a tab.
+4. Put your OpenAI key in `~/.Renviron` — never in the project folder:
 
 ```
 OPENAI_API_KEY=sk-...
 ```
 
-Then set the condition you want with environment variables before starting Shiny:
+Then pick a condition with environment variables before starting Shiny:
 
 ```r
-Sys.setenv(LLM_PROVIDER = "ollama")          # or "openai"
-Sys.setenv(OLLAMA_MODEL = "llama3.1:8b")
-Sys.setenv(OLLAMA_USE_TOOLS = "1")           # 0 = pre-fetch, 1 = tool calling
+Sys.setenv(LLM_PROVIDER    = "ollama")     # or "openai"
+Sys.setenv(OLLAMA_MODEL    = "llama3.1:8b")
+Sys.setenv(OLLAMA_USE_TOOLS = "1")         # 0 = pre-fetch, 1 = tool calling
 Sys.setenv(LLM_TEMPERATURE = "0")
 shiny::runApp()
 ```
 
-For local models you'll need [Ollama](https://ollama.com/) running and the model
+For local models you need [Ollama](https://ollama.com/) running with the model
 pulled (`ollama pull llama3.1:8b`).
+
+**The analysis scripts run on their own.** `analysis/` needs nothing but R and
+ggplot2 — the benchmark data is included, so anyone can regenerate every figure
+in the dissertation without the portal or the IMPC files:
+
+```bash
+cd analysis && Rscript make_figures.R
+```
 
 ## What the evaluation found
 
