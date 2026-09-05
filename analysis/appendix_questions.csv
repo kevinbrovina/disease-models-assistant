@@ -1,0 +1,23 @@
+q,question,category,answer
+1,Is the ZPR1 gene included in the disease models app?,Gene presence,"Yes — present in Gene Summary (HGNC:13051, MGI:1330262). PhenoDigm match = no, so it does not appear in PhenoDigm Scores or Other."
+2,Is the ZPR1 gene associated with any OMIM disease? How many? Which one(s)?,Gene → disorder,"Yes. One OMIM disorder: OMIM:619321, Growth Restriction, Hypoplastic Kidneys, Alopecia and Distinctive Facies."
+3,Is the ZP3 gene included in the disease models app?,Gene presence,"Yes — present in Gene Summary (HGNC:13189, MGI:99215). PhenoDigm match = no."
+4,Is the ZP3 gene associated with any OMIM disease? How many? Which one(s)?,Gene → disorder,"Yes. One OMIM disorder: OMIM:617712, Oocyte/Zygote/Embryo Maturation Arrest 3. Also ORPHA:404466 (Female Infertility Due To Zona Pellucida Defect), which is an Orphanet record, not OMIM."
+5,What is the PhenoDigm score for the COL4A3 gene?,Gene → score,"Maximum 39.2 (Alport Syndrome 3A). Three rows in total, scoring 39.2, 37.06 and 28.76."
+6,What are the matching phenotypes between OMIM:104200 and COL4A3? Human? Mouse?,Disorder + gene phenotypes,"Score 39.2, with 15 HP (human) terms and 3 MP (mouse) terms. The portal stores identifiers only; it holds no phenotype-name field."
+7,Is there information for the OMIM:101400 disease in the app?,Disorder presence,"Yes — Saethre-Chotzen Syndrome, gene TWIST1, in PhenoDigm Scores."
+8,How many mouse models have a match for the disease OMIM:101400?,Disorder → count,"1 in PhenoDigm Scores and 56 in PhenoDigm Other. The two sets do not overlap, so 57 distinct mouse models across both tables."
+9,Can you provide a summary of what the PhenoDigm Scores table contains?,Table description,"Known disease genes; one row is one disorder compared with one mouse model. Columns: disorder_id, disorder_name, gene_symbol, description, score, query_phenotype (HP), match_phenotype (MP). 3,085 rows covering 1,311 distinct genes."
+10,What is in the Gene Summary table?,Table description,"Columns: gene_symbol, hgnc_id, mgi_id, disorder_id, disorder_name, IMPC_pipeline (y/n), IMPC_phenotypes (y/n), HPO_phenotypes (y/n), PhenoDigm_match (y/n), max_score."
+11,What is in the PhenoDigm Other table?,Table description,"Exploratory candidate matches for genes without a known disease association. Columns: query, match, mgi_id, hgnc_id, gene_symbol, disorder_name, score, life_stage, description, query_phenotype, match_phenotype. Entries are retained above score 40 (observed minimum 40.005)."
+12,Which IMPC data release is used to compute the information in the app?,Metadata,IMPC Data Release 20.1.
+13,Is there any PhenoDigm match for the gene ZNF365?,Gene match (yes/no),"No — PhenoDigm match = no, max_score = NA. Absent from both PhenoDigm tables but present in Gene Summary."
+14,Is there any PhenoDigm match for the gene ZNF148?,Gene match (yes/no),"Yes — maximum score 19.09 (OMIM:617260, Global Developmental Delay, Absent or Hypoplastic Corpus Callosum, and Dysmorphic Facies)."
+15,"How many mouse models show at least one of MP:0004509, MP:0005296, MP:0001406?",Phenotype OR-count,"PhenoDigm Scores: 109 rows, corresponding to 55 distinct mouse models (union)."
+16,Is there any mouse model that shows all three of them?,Phenotype AND-count,No — 0 rows contain all three terms together (PhenoDigm Scores).
+17,"Is there any mouse model that shows all three of MP:0002965, MP:0002941, MP:0005568?",Phenotype AND-count,"Yes — 12 rows, corresponding to 3 distinct mouse models (genes BSCL2, DMD and LEPR)."
+18,Which human gene has a higher similarity score with its associated disease: FGB or ASXL1?,Gene comparison,"ASXL1, at 40.73 (Aggressive Systemic Mastocytosis), against FGB at 35.02 (Familial Afibrinogenaemia)."
+19,How many diseases have a similarity score > 90?,Threshold count,"PhenoDigm Scores: 1 disorder (OMIM:606392, MODY type 4). For reference, PhenoDigm Other contains 191 distinct disorders above 90."
+20,How many human genes have a similarity score > 90?,Threshold count,"PhenoDigm Scores: 1 gene (PDX1, score 96.08). For reference, PhenoDigm Other contains 611 distinct genes above 90."
+21,How many mouse models have a similarity score of 100 for ADHD? (PhenoDigm Other),Disorder-name + threshold,"55 distinct mouse models. Requires resolving ""ADHD"" to OMIM:143465 before counting."
+22,"For how many disorders could the mouse model of GPR173 be a good model? (>40, >60, >80) (PhenoDigm Other)",Gene threshold counts,331 disorders above 40; 55 above 60; 12 above 80. Note that the >40 case spans 332 rows but 331 distinct disorders.
