@@ -1,4 +1,4 @@
-# --- secrets: never commit these ---------------------------------
+# secrets - never commit
 .Renviron
 .Rprofile
 .env
@@ -6,15 +6,12 @@
 *.pem
 secrets.R
 
-# --- data ---------------------------------------------------------
-# The IMPC Release 20.1 files are ~197 MB and phenodigm_other alone is
-# 97 MB, which is over GitHub's per-file limit. Get them from the IMPC
-# release instead - see the README.
+# IMPC data - too big for github, get it from the release
 data/
 *.fst
 *.txt.gz
 
-# --- R session junk ----------------------------------------------
+# R junk
 .Rhistory
 .RData
 .Rapp.history
@@ -22,10 +19,8 @@ data/
 .Rproj.user/
 *.Rproj
 
-# --- shiny deploy -------------------------------------------------
 rsconnect/
 
-# --- editors and OS ----------------------------------------------
 .idea/
 .vscode/
 .DS_Store
